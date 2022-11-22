@@ -23,6 +23,9 @@
         <select name="usersDropDownList" id="usersDropDownList">
             <option value="">Select</option>
         </select>
+        <section id="todosList">
+
+        </section>
 
         <a href="./new_todo.html">+ Add Task</a>
     </main>
@@ -30,12 +33,12 @@
     <script src="./scripts/common.js"></script>
     <script>
         const usersDropDownList = $q("#usersDropDownList");
-
+        const todosList = $q("#todosList");
 
 
         function loadUsers() {
             return fetch("http://localhost:8083/api/users/")
-                .then(response => response.json())
+                .then(response => response.json());
         }
 
         function fillUsersDropDown(users) {
@@ -51,8 +54,30 @@
             return fetch("http://localhost:8083/api/todos/byuser/" + userId).then(response => response.json());
         }
 
+        function createToDoCard(todo) {
+            const cardDiv = document.createElement("div");
+            cardDiv.classList.add("card");
+
+            const categoryElement = document.createElement("p");
+            const priorityElement = document.createElement("p");
+            const descriptionElement = document.createElement("p");
+            const deadlineElement = document.createElement("p");
+
+            categoryElement.innerText = todo.category;
+            priorityElement.innerText = todo.priority;
+            descriptionElement.innerText = todo.description;
+            deadlineElement.innerText = todo.deadline;
+
+            cardDiv.append(categoryElement, priorityElement, descriptionElement, deadlineElement);
+
+            return cardDiv;
+        }
+
         function fillTodosList(todos) {
-            console.log(todos);
+            todosList.innerHTML = "";
+            for (const todo of todos) {
+                todosList.appendChild(createToDoCard(todo));
+            }
         }
 
         function userSelected() {
