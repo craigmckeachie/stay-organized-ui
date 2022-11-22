@@ -1,0 +1,19 @@
+### GET All Categories
+GET http://localhost:8083/api/categories
+
+### GET All Todos
+GET http://localhost:8083/api/todos
+
+### GET All Users
+GET http://localhost:8083/api/users/
+
+
+### GET All Todos by User
+GET http://localhost:8083/api/todos/byuser/2
+
+### Insert a Todo
+POST http://localhost:8083/api/todos
+Content-Type: application/json
+
+{"userid":5,"category":"Personal Task","description":"Finish studying for ENG 211 exam","deadline":"2022-12-15","priority":"Medium","completed":false}
+
