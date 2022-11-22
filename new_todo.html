@@ -20,9 +20,44 @@
     </header>
     <main>
         <h1>Todo</h1>
+        <form>
+            <label for="usersDropDownList">User</label>
+            <select name="usersDropDownList" id="usersDropDownList">
+                <option value="">Select</option>
+            </select>
+            <label for="categoriesDropDownList">Category</label>
+            <select name="categoriesDropDownList" id="categoriesDropDownList">
+                <option value="">Select</option>
+            </select>
+            <label for="prioritiesDropDownList">Priority</label>
+            <select name="prioritiesDropDownList" id="prioritiesDropDownList">
+                <option value="">Select</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+
+            <label for="descriptionTextArea">Description</label>
+            <textarea name="descriptionTextArea" id="descriptionTextArea" cols="30" rows="10"></textarea>
+
+            <label for="deadlineInput"></label>
+            <input type="date" id="deadlineInput">
+
+            <button>Add</button>
+
+
+        </form>
     </main>
     <footer></footer>
     <script src="./scripts/common.js"></script>
+    <script>
+        const categoriesDropDownList = $q("#categoriesDropDownList");
+
+        window.onload = function () {
+            loadUsers().then(data => fillUsersDropDown(data));
+            loadCategories().then(data => fillCategoriesDropDown(data))
+        }
+    </script>
 </body>
 
 </html>
