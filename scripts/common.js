@@ -6,11 +6,21 @@ function loadUsers() {
   );
 }
 
-function fillUsersDropDown(users) {
+function getUserId() {
+  const params = new URLSearchParams(window.location.search);
+  if (!params.has("userId")) return undefined;
+  return Number(params.get("userId"));
+}
+
+function fillUsersDropDown(users, selectedUserId = 0) {
   for (const user of users) {
     const option = document.createElement("option");
     option.value = user.id;
     option.innerText = user.name;
+    if (user.id === selectedUserId) {
+      option.selected = true;
+    }
+
     usersDropDownList.appendChild(option);
   }
 }

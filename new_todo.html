@@ -89,11 +89,14 @@
         function submit(event) {
             event.preventDefault();
             saveTodo(formToObject())
-                .then(() => window.location.href = "./todos.html");
+                .then((todo) => window.location.href = "./todos.html?userId=" + todo.userid);
         }
 
+
+
         window.onload = function () {
-            loadUsers().then(data => fillUsersDropDown(data));
+            const selectedUserId = getUserId();
+            loadUsers().then(data => fillUsersDropDown(data, selectedUserId));
             loadCategories().then(data => fillCategoriesDropDown(data));
             form.onsubmit = submit;
         }

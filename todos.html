@@ -23,18 +23,19 @@
         <select name="usersDropDownList" id="usersDropDownList">
             <option value="">Select</option>
         </select>
+        <button id="addTaskButton">+ Add Task</button>
         <section id="todosList">
-
         </section>
 
-        <a href="./new_todo.html">+ Add Task</a>
+
     </main>
     <footer></footer>
     <script src="./scripts/common.js"></script>
     <script>
         const usersDropDownList = $q("#usersDropDownList");
         const todosList = $q("#todosList");
-    
+        const addTaskButton = $q("#addTaskButton");
+
 
         function loadTodos(userId) {
             return fetch("http://localhost:8083/api/todos/byuser/" + userId).then(response => response.json());
@@ -71,12 +72,26 @@
             loadTodos(userId).then(data => fillTodosList(data))
         }
 
+
+
+        function addTask() {
+            window.location.href = "./new_todo.html?userId=" + usersDropDownList.value;
+        }
+
         window.onload = function () {
-            loadUsers().then(data => fillUsersDropDown(data));
+            const selectedUserId = getUserId();
+            loadUsers().then(data => {
+                fillUsersDropDown(data, selectedUserId)
+                if (selectedUserId) {
+                    userSelected();
+                }
+            });
             //OR
             //loadUsers().then(fillUsersDropDown);
 
-            usersDropDownList.onchange = userSelected
+
+            usersDropDownList.onchange = userSelected;
+            addTaskButton.onclick = addTask;
         }
     </script>
 </body>
