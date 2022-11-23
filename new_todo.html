@@ -40,8 +40,13 @@
             <label for="descriptionTextArea">Description</label>
             <textarea name="descriptionTextArea" id="descriptionTextArea" cols="30" rows="10"></textarea>
 
+
+
             <label for="deadlineInput"></label>
             <input type="date" id="deadlineInput">
+
+            <label for="completedCheckbox">Completed</label>
+            <input type="checkbox" name="completedCheckbox" id="completedCheckbox">
 
             <button>Add</button>
 
@@ -51,11 +56,46 @@
     <footer></footer>
     <script src="./scripts/common.js"></script>
     <script>
+        const usersDropDownList = $q("#usersDropDownList");
         const categoriesDropDownList = $q("#categoriesDropDownList");
+        const prioritiesDropDownList = $q("#prioritiesDropDownList");
+        const descriptionTextArea = $q("#descriptionTextArea");
+        const deadlineInput = $q("#deadlineInput");
+        const completedCheckbox = $q("#completedCheckbox");
+        const form = $q("form");
+
+        function formToObject() {
+            let todo = {
+                userid: Number(usersDropDownList.value),
+                category: categoriesDropDownList.value,
+                description: descriptionTextArea.value,
+                deadline: deadlineInput.value,
+                priority: prioritiesDropDownList.value,
+                completed: completedCheckbox.checked,
+            }
+
+            return todo;
+        }
+
+        function saveTodo(todo) {
+            console.log(JSON.stringify(todo));
+            return fetch("http://localhost:8083/api/todos", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(todo)
+            }).then(response => response.json())
+        }
+
+        function submit(event) {
+            event.preventDefault();
+            saveTodo(formToObject())
+                .then(() => window.location.href = "./todos.html");
+        }
 
         window.onload = function () {
             loadUsers().then(data => fillUsersDropDown(data));
-            loadCategories().then(data => fillCategoriesDropDown(data))
+            loadCategories().then(data => fillCategoriesDropDown(data));
+            form.onsubmit = submit;
         }
     </script>
 </body>

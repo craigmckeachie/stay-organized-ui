@@ -24,7 +24,7 @@ function loadCategories() {
 function fillCategoriesDropDown(categories) {
   for (const category of categories) {
     const option = document.createElement("option");
-    option.value = category.id;
+    option.value = category.name;
     option.innerText = category.name;
     categoriesDropDownList.appendChild(option);
   }

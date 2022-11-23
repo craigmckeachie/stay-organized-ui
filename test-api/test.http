@@ -15,5 +15,17 @@ GET http://localhost:8083/api/todos/byuser/2
 POST http://localhost:8083/api/todos
 Content-Type: application/json
 
-{"userid":5,"category":"Personal Task","description":"Finish studying for ENG 211 exam","deadline":"2022-12-15","priority":"Medium","completed":false}
+{"userid":1,
+"category":"Personal Task",
+"description":"Finish studying for ENG 211 exam",
+"deadline":"2022-11-23",
+"priority":"High",
+"completed":false}
+
+# {"userid":5,
+#  "category":"Personal Task",
+#  "description":"Finish studying for ENG 211 exam",
+#  "deadline":"2022-12-15",
+#  "priority":"Medium",
+#  "completed":false}
 
