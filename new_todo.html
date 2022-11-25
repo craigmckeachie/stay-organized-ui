@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link rel="stylesheet" href="./css/preface.min.css">
     <link rel="stylesheet" href="./css/styles.css" />
 </head>
 
@@ -18,20 +19,20 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="container">
         <h1>Todo</h1>
         <form>
             <label for="usersDropDownList">User</label>
             <select name="usersDropDownList" id="usersDropDownList">
-                <option value="">Select</option>
+                <option value="">Select...</option>
             </select>
             <label for="categoriesDropDownList">Category</label>
             <select name="categoriesDropDownList" id="categoriesDropDownList">
-                <option value="">Select</option>
+                <option value="">Select...</option>
             </select>
             <label for="prioritiesDropDownList">Priority</label>
             <select name="prioritiesDropDownList" id="prioritiesDropDownList">
-                <option value="">Select</option>
+                <option value="">Select...</option>
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
@@ -48,12 +49,13 @@
             <label for="completedCheckbox">Completed</label>
             <input type="checkbox" name="completedCheckbox" id="completedCheckbox">
 
-            <button>Add</button>
+            <button class="success ">Add</button>
 
 
         </form>
     </main>
     <footer></footer>
+
     <script src="./scripts/common.js"></script>
     <script>
         const usersDropDownList = $q("#usersDropDownList");
