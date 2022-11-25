@@ -50,17 +50,21 @@
             const cardDiv = document.createElement("div");
             cardDiv.classList.add("card");
 
+            const descriptionElement = document.createElement("b");
+
             const categoryElement = document.createElement("p");
+            categoryElement.classList.add("text-muted");
             const priorityElement = document.createElement("p");
-            const descriptionElement = document.createElement("p");
+            priorityElement.classList.add("text-muted");
             const deadlineElement = document.createElement("p");
+            deadlineElement.classList.add("text-muted");
 
-            categoryElement.innerText = todo.category;
-            priorityElement.innerText = todo.priority;
             descriptionElement.innerText = todo.description;
-            deadlineElement.innerText = todo.deadline;
+            categoryElement.innerText = `Category: ${todo.category}`;
+            priorityElement.innerText = `Priority: ${todo.priority}`;
+            deadlineElement.innerText = `Deadline: ${todo.deadline}`;
 
-            cardDiv.append(categoryElement, priorityElement, descriptionElement, deadlineElement);
+            cardDiv.append(descriptionElement, document.createElement("hr"), categoryElement, priorityElement, deadlineElement);
 
             return cardDiv;
         }

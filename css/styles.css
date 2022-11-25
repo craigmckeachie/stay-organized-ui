@@ -1,3 +1,8 @@
 .card {
   padding: 2rem;
 }
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
