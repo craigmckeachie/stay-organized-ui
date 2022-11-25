@@ -6,3 +6,13 @@ hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+input,
+textarea,
+select {
+  margin-bottom: 2rem;
+}
+
+input[type="checkbox"] {
+  width: 8%;
+}
